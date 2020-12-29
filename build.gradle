@@ -21,11 +21,9 @@ dependencies {
     implementation 'com.google.guava:guava:26.0-jre' // NEW'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
-    //runtimeOnly 'com.h2database:h2'
     
-    
-    
-    
+    runtimeOnly 'com.h2database:h2'
+
     implementation 'com.graphql-java-kickstart:graphql-spring-boot-starter:8.1.0'  
 	// to embed Altair tool
 	runtimeOnly 'com.graphql-java-kickstart:altair-spring-boot-starter:8.1.0'	
