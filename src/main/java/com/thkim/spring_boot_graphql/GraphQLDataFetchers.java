@@ -7,9 +7,13 @@ import java.util.Map;
 import org.springframework.stereotype.Component;
 
 import com.google.common.collect.ImmutableMap;
+import com.thkim.spring_boot_graphql.util.annotation.Gql;
+import com.thkim.spring_boot_graphql.util.annotation.GqlDataFetcher;
+import com.thkim.spring_boot_graphql.util.annotation.GqlType;
 
 import graphql.schema.DataFetcher;
 
+@Gql	
 @Component
 public class GraphQLDataFetchers {
 
@@ -27,6 +31,7 @@ public class GraphQLDataFetchers {
 
 	private static String bookss = "abe";
 
+	@GqlDataFetcher(type=GqlType.QUERY)
 	public DataFetcher getBookByIdDataFetcher() {
 		return dataFetchingEnvironment -> {
 			String bookId = dataFetchingEnvironment.getArgument("id");
@@ -34,6 +39,7 @@ public class GraphQLDataFetchers {
 		};
 	}
 
+	@GqlDataFetcher(type=GqlType.QUERY)
 	public DataFetcher getAuthorDataFetcher() {
 		return dataFetchingEnvironment -> {
 			Map<String, String> book = dataFetchingEnvironment.getSource();
@@ -42,6 +48,7 @@ public class GraphQLDataFetchers {
 		};
 	}
 
+	@GqlDataFetcher(type=GqlType.QUERY)
 	public DataFetcher getPageCountDataFetcher() {
 		return dataFetchingEnvironment -> {
 			Map<String, String> book = dataFetchingEnvironment.getSource();
@@ -49,9 +56,11 @@ public class GraphQLDataFetchers {
 		};
 	}
 
+	@GqlDataFetcher(type=GqlType.QUERY)
 	public DataFetcher getBooksDataFetcher() {
 		return dataFetchingEnvironment -> {
-			return books;//.stream();//.filter(book -> book.get("id").equals("book-1")).findFirst().orElse(null);
+			return books;// .stream();//.filter(book ->
+							// book.get("id").equals("book-1")).findFirst().orElse(null);
 		};
 
 		/*
